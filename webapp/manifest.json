@@ -76,7 +76,8 @@
             "minUI5Version": "1.97.0",
             "libs": {
                 "sap.ui.core": {},
-                "sap.fe.templates": {}
+                "sap.fe.templates": {},
+                "sap.f": {}
             }
         },
         "models": {
@@ -104,12 +105,17 @@
                 {
                     "pattern": ":?query:",
                     "name": "ZC_TODOSList",
-                    "target": "ZC_TODOSList"
+                    "target": [
+                        "ZC_TODOSList"
+                    ]
                 },
                 {
                     "pattern": "ZC_TODOS({key}):?query:",
                     "name": "ZC_TODOSObjectPage",
-                    "target": "ZC_TODOSObjectPage"
+                    "target": [
+                        "ZC_TODOSList",
+                        "ZC_TODOSObjectPage"
+                    ]
                 }
             ],
             "targets": {
@@ -130,7 +136,9 @@
                             },
                             "initialLoad": "Enabled"
                         }
-                    }
+                    },
+                    "controlAggregation": "beginColumnPages",
+                    "contextPattern": ""
                 },
                 "ZC_TODOSObjectPage": {
                     "type": "Component",
@@ -141,13 +149,28 @@
                             "editableHeaderContent": false,
                             "entitySet": "ZC_TODOS"
                         }
-                    }
+                    },
+                    "controlAggregation": "midColumnPages",
+                    "contextPattern": "/ZC_TODOS({key})"
                 }
+            },
+            "config": {
+                "flexibleColumnLayout": {
+                    "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+                    "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+                },
+                "routerClass": "sap.f.routing.Router"
             }
         },
         "contentDensities": {
             "compact": true,
             "cozy": true
+        },
+        "rootView": {
+            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+            "type": "XML",
+            "async": true,
+            "id": "appRootView"
         }
     },
     "sap.platform.abap": {
