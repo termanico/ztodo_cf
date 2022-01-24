@@ -11,7 +11,7 @@
         "description": "{{appDescription}}",
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata4/sap/zb_todos/srvd_a2x/sap/zs_todos/0001/",
+                "uri": "/sap/opu/odata4/sap/zb_todos_v4/srvd/sap/zs_todos/0001/",
                 "type": "OData",
                 "settings": {
                     "annotations": [
